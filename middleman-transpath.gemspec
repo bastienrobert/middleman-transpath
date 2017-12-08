@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Bastien Robert"]
   # s.email       = ["email@example.com"]
   # s.homepage    = "http://example.com"
-  s.summary     = 'summary'
-  # s.description = %q{A longer description of your extension}
+  s.summary     = "i18n helper for slug and current page translating"
+  s.description = "This helper allows you to translate your current path to the same path in another locale, with a different slug. It can be include in a partial, in the header for example ; and need a simple 2 minutes configuration."
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
