@@ -31,7 +31,7 @@ Here is the most difficult part. You'll need your locales files (**/locales/YOUR
 - Subdirectories dir in a list (URL direction)
 - Subdirectories translation : in locale.paths (one by one, not a list)
 
-If you want to see an example, go to the [wiki section]
+If you want to see an example, go to the [wiki section](https://github.com/bastienrobert/middleman-transpath/wiki/Locale-example)
 
 ## Helper to translate the current page
 Simply use the following helper to translate your current page in another language. Replace the **:fr** by the locale symbol of your choise.
