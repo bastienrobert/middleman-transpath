@@ -6,11 +6,15 @@ Translating path with middleman, or access to the same page but different locale
 
 For example, you cannot access from :
 
-`projets/premier-projet` to `projects/first-project`
+`/a-propos` to `/en/about`
+
+## Install
+Add the following line to your **Gemfile**: `gem 'middleman-transpath'` 
+and this to your **config.rb**: `activate :transpath`
 
 ## Solution ?
-Yep, easily. Follow the steps :
-- Install and configure i18n with your favorite locales ! Presize your default locale too.
+Yep, easily. Follow these steps :
+- Install and configure i18n with your favorite locales! Presize your default locale too (for example : `activate :i18n, :mount_at_root => :fr` in your **config.rb**, to use French as default locale), check the [documentation](https://middlemanapp.com/advanced/localization/)
 - Then, generate a file named `languages.yml`, and configure how you want your languages links to be displayed. Here an example:
 
 ```yaml
@@ -21,11 +25,13 @@ en: "🇺🇸 - EN"
 - Wow, such great, your links are displayed ! Now, let's configure paths in the next step.
 
 ## Path configuration
-Here is the most difficult part. You'll need your locales files (locales dir in the root folder). For each locale, you have to precise :
+Here is the most difficult part. You'll need your locales files (**/locales/YOUR\_LANG.yml**). For each locale and page, you have to set:
 - The title title of the page (identifier)
 - The title translation : in locale.titles
 - Subdirectories dir in a list (URL direction)
 - Subdirectories translation : in locale.paths (one by one, not a list)
+
+If you want to see an example, go to the [wiki section](https://github.com/bastienrobert/middleman-transpath/wiki/Locale-example)
 
 ## Helper to translate the current page
 Simply use the following helper to translate your current page in another language. Replace the **:fr** by the locale symbol of your choise.
