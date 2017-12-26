@@ -4,6 +4,8 @@ require 'middleman-core'
 # Extension namespace
 class Transpath < ::Middleman::Extension
 
+  option :label, {en: '🇺🇸 - EN', fr: '🇫🇷 - FR'}, 'This hash should contain the lang symbol and his label'
+
   def initialize(app, options_hash={}, &block)
     super
   end
@@ -40,18 +42,18 @@ class Transpath < ::Middleman::Extension
       end
     end
 
-    def link_translate(lang)
-      return link_to data.languages.send(lang.to_s),
-      if lang === I18n.default_locale
-        config[:host] + '/' +
-        link_translate_path(lang) +
-        link_translate_slug(lang)
-      else
-        config[:host] + '/' +
-        lang.to_s + '/' +
-        link_translate_path(lang) +
-        link_translate_slug(lang)
-      end
+    def link_translate(lang, params={})
+      return link_to (params[:label] ||= params['label'] ||= extensions[:transpath].options.label[lang]),
+        if lang === I18n.default_locale
+          config[:host] + '/' +
+          link_translate_path(lang) +
+          link_translate_slug(lang)
+        else
+          config[:host] + '/' +
+          lang.to_s + '/' +
+          link_translate_path(lang) +
+          link_translate_slug(lang)
+        end
     end
   end
 end
