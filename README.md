@@ -15,6 +15,25 @@ and this to your **config.rb**: `activate :transpath`
 ## Solution ?
 Yep, easily. Install and configure i18n with your favorite locales, and don't forget to specify your default locale (for example : `activate :i18n, :mount_at_root => :fr` in your **config.rb**, to use French as default locale), check the [documentation](https://middlemanapp.com/advanced/localization/)
 
+## Configuration
+By default, this is the following configuration:
+```YAML
+t.label = {
+  en: '🇺🇸 - EN',
+  fr: '🇫🇷 - FR'
+}
+```
+You can add others locales, or rename these, just like this in your config.rb:
+```YAML
+activate :transpath do
+  t.label = {
+    en: 'EN',
+    fr: 'FR',
+    it: 'IT'
+  }
+end
+```
+
 ## Path configuration
 Add a slug on your page [frontmatter](https://middlemanapp.com/basics/frontmatter/).
 ```YAML
@@ -95,6 +114,10 @@ Okok, just go here, to get everyting completely detailled:
 Simply use the following helper to translate your current page in another language. Replace the **:fr** by the locale symbol of your choise.
 ```RUBY
 <%= link_translate(:fr) %>
+```
+You don't want to use your default label? Do the following:
+```RUBY
+<%= link_translate(:fr, {label: 'FR - test'}) %>
 ```
 
 ## Helper to translate the page title
