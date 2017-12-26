@@ -1,5 +1,6 @@
 # Middleman-transpath
 You're using i18n for your middleman website ? This extension is for you !
+![demo](demo.gif)
 
 ## Why ?
 Translating path with middleman, or access to the same page but different locale and slug is not integrate by default in middleman-i18n.
