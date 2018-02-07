@@ -33,12 +33,30 @@ class Transpath < ::Middleman::Extension
     def title_translate
       dynamic = current_page.data.dynamic
       unless (defined?(dynamic.enable)).nil?
-        current_page
+        r = current_page
           .locals[dynamic.data.parameterize.underscore.to_sym][locale.to_s]
           .send(dynamic.name.to_s)
           .capitalize
       else
-        t("titles.#{current_page.data.slug}", locale: lang, :default => current_page.data.slug).capitalize
+        r = t("titles.#{current_page.data.slug}", locale: lang, :default => "").capitalize
+      end
+      if r == ""
+        r = data.meta.title
+      else
+        r = data.meta.title + " | " + r
+      end
+      return r
+    end
+
+    def description_translate
+      dynamic = current_page.data.dynamic
+      unless (defined?(dynamic.enable)).nil?
+        current_page
+          .locals[dynamic.data.parameterize.underscore.to_sym][locale.to_s]
+          .send(dynamic.description.to_s)
+          .capitalize
+      else
+        t("descriptions.#{current_page.data.slug}", locale: lang, :default => data.meta.description).capitalize
       end
     end
 
