@@ -124,6 +124,8 @@ You don't want to use your default label? Do the following:
 ## Helper to translate the page title
 Add `title_translate` in your layout `<title>`. It'll use the title you specified in frontmatter, automaticly.
 
+There's a `description_translate` helper too, to translate the description.
+
 ## Contributing
 1. Fork it ( https://github.com/bastienrobert/middleman-transpath/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
