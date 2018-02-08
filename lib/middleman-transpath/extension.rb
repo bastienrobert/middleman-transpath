@@ -22,9 +22,13 @@ class Transpath < ::Middleman::Extension
     def link_translate_slug(lang)
       dynamic = current_page.data.dynamic
       unless (defined?(dynamic.enable)).nil?
-        current_page
-        .locals[dynamic.data.parameterize.underscore.to_sym][lang.to_s]
-        .send(dynamic.slug.to_s)
+        r = current_page
+            .locals[dynamic.data.parameterize.underscore.to_sym]
+        if dynamic.name_and_slug_translate == false
+          r = r.send(dynamic.slug.to_s)
+        else
+          r = r[lang.to_s].send(dynamic.slug.to_s)
+        end
       else
         t("paths.#{current_page.data.slug}", locale: lang, :default => current_page.data.slug)
       end
@@ -34,9 +38,12 @@ class Transpath < ::Middleman::Extension
       dynamic = current_page.data.dynamic
       unless (defined?(dynamic.enable)).nil?
         r = current_page
-          .locals[dynamic.data.parameterize.underscore.to_sym][locale.to_s]
-          .send(dynamic.name.to_s)
-          .capitalize
+          .locals[dynamic.data.parameterize.underscore.to_sym]
+        if dynamic.name_and_slug_translate == false
+          r = r.send(dynamic.name.to_s).capitalize
+        else
+          r = r[locale.to_s].send(dynamic.name.to_s).capitalize
+        end
       else
         r = t("titles.#{current_page.data.slug}", locale: lang, :default => "").capitalize
       end

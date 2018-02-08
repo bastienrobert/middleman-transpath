@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "middleman-transpath"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Bastien Robert"]
-  # s.email       = ["email@example.com"]
-  # s.homepage    = "http://example.com"
+  s.email       = ["bastienrobert@outlook.com"]
+  s.homepage    = "https://github.com/bastienrobert/middleman-transpath"
   s.summary     = "i18n helper for slug and current page translating"
   s.description = "This helper allows you to translate your current path to the same path in another locale, with a different slug. It can be include in a partial, in the header for example ; and need a simple 2 minutes configuration."
 
